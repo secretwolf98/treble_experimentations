@@ -48,14 +48,17 @@ ROM types:
   e-oreo
   havoc-pie
   komodo-pie
+  lineage141
   lineage151
   lineage160
+  lineage170
   mokee-oreo
   pixel81
   pixel90
   potato-pie
   rebellion-pie
   rr-oreo
+  rr-pie
   slim-oreo
   graphene9
   graphene10
@@ -77,7 +80,7 @@ Variants are dash-joined combinations of (in order):
   * "user" for prod build
   * "userdebug" for debug build (default)
 
-for example:
+for an example:
 
 * arm-aonly-vanilla-nosu-user
 * arm64-ab-gapps-su
@@ -144,6 +147,14 @@ function get_rom_type() {
                 extra_make_options="WITHOUT_CHECK_API=true"
                 jack_enabled="true"
                 ;;
+	    lineage141)
+                mainrepo="https://github.com/LineageOS/android.git"
+                mainbranch="lineage-14.1"
+                localManifestBranch="android-7.1.2"
+                treble_generate="lineage"
+                extra_make_options="WITHOUT_CHECK_API=true"
+                jack_enabled="false"
+                ;;
             lineage151)
                 mainrepo="https://github.com/LineageOS/android.git"
                 mainbranch="lineage-15.1"
@@ -160,6 +171,14 @@ function get_rom_type() {
                 extra_make_options="WITHOUT_CHECK_API=true"
                 jack_enabled="false"
                 ;;
+	    lineage160)
+                mainrepo="https://github.com/LineageOS/android.git"
+                mainbranch="lineage-17.0"
+                localManifestBranch="android-10.0"
+                treble_generate="lineage"
+                extra_make_options="WITHOUT_CHECK_API=true"
+                jack_enabled="false"
+                ;;
             rr-oreo)
                 mainrepo="https://github.com/ResurrectionRemix/platform_manifest.git"
                 mainbranch="oreo"
@@ -168,6 +187,14 @@ function get_rom_type() {
                 extra_make_options="WITHOUT_CHECK_API=true"
                 jack_enabled="true"
                 ;;
+            rr-pie)
+                mainrepo="https://github.com/ResurrectionRemix/platform_manifest.git"
+                mainbranch="pie"
+                localManifestBranch="android-9.0"
+                treble_generate="rr"
+                extra_make_options="WITHOUT_CHECK_API=true"
+                jack_enabled="true"
+                ;;		
             pixel81)
                 mainrepo="https://github.com/PixelExperience/manifest.git"
                 mainbranch="oreo-mr1"
