@@ -13,7 +13,7 @@
 
 For example:
 
-    git clone https://github.com/secretwolf98/treble_experimentations -b testing
+    git clone https://github.com/secretwolf98/treble_experimentations
     mkdir Lineage; cd Lineage
     bash ../treble_experimentations/build-rom.sh android-8.1 lineage
 
