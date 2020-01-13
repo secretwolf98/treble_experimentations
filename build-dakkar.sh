@@ -177,7 +177,7 @@ function get_rom_type() {
                 ;;
 	    lineage141)
                 mainrepo="https://github.com/LineageOS/android.git"
-                mainbranch="lineage-14.1"
+                mainbranch="cm-14.1"
                 localManifestBranch="android-7.1.2"
                 treble_generate="lineage"
                 extra_make_options="WITHOUT_CHECK_API=true"
