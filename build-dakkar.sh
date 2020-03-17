@@ -19,8 +19,12 @@ elif [[ $(uname -s) = "Linux" ]];then
 fi
 
 ## handle command line arguments
-read -p "Do you want to sync? (y/N) " choice
-
+if [[ -v build_dakkar_choice ]]
+then
+echo "Using exported choice"
+else
+read -p "Do you want to sync? (y/N) " build_dakkar_choice
+fi
 function help() {
     cat <<EOF
 Syntax:
@@ -137,7 +141,7 @@ function get_rom_type() {
                 ;;
             aosp10)
                 mainrepo="https://android.googlesource.com/platform/manifest.git"
-                mainbranch="android-10.0.0_r2"
+                mainbranch="android-10.0.0_r25"
                 localManifestBranch="android-10.0"
                 treble_generate="aosp"
                 extra_make_options=""
@@ -611,7 +615,7 @@ function patch_things() {
         rm -f device/*/sepolicy/common/private/genfs_contexts
         (
             cd device/phh/treble
-    if [[ $choice == *"y"* ]];then
+    if [[ $build_dakkar_choice == *"y"* ]];then
             git clean -fdx
     fi
             bash generate.sh "$treble_generate"
@@ -668,7 +672,7 @@ if [[ $python == "3." ]]; then
 fi
 
 init_release
-if [[ $choice == *"y"* ]];then
+if [[ $build_dakkar_choice == *"y"* ]];then
     init_main_repo
     init_local_manifest
     init_patches
@@ -681,9 +685,14 @@ if [[ $jack_enabled == "true" ]]; then
     jack_env
 fi
 
-read -p "Do you want to clean? (y/N) " clean
+if [[ -v build_dakkar_clean ]]
+then
+echo "Using exported clean choice"
+else
+read -p "Do you want to clean? (y/N) " build_dakkar_clean
+fi
 
-if [[ $clean == *"y"* ]];then
+if [[ $build_dakkar_clean == *"y"* ]];then
     clean_build
 fi
 
